@@ -1,0 +1,63 @@
+/* Smooth scrolling and basic cleanups */
+html { scroll-behavior: smooth; }
+body { 
+    font-family: 'Inter', sans-serif; 
+    margin: 0;
+    overflow-x: hidden;
+}
+
+/* Mesh Gradient Background */
+.mesh-gradient {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background: #080a14; /* Dark Navy Base */
+    background-image: 
+        radial-gradient(at 10% 10%, rgba(253, 186, 116, 0.25) 0px, transparent 40%), /* Peach glow top-left */
+        radial-gradient(at 40% 40%, rgba(139, 92, 246, 0.3) 0px, transparent 50%),   /* Purple middle */
+        radial-gradient(at 80% 20%, rgba(30, 64, 175, 0.2) 0px, transparent 40%);    /* Blue top-right */
+}
+
+/* Page sections */
+.page-section { display: none; animation: fadeIn 0.4s; }
+.page-section.active { display: block; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+/* Orbital Animations */
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@keyframes reverse-rotate {
+    from { transform: rotate(360deg); }
+    to { transform: rotate(0deg); }
+}
+
+.animate-orbit {
+    animation: rotate 60s linear infinite;
+}
+
+.animate-orbit-reverse {
+    animation: reverse-rotate 60s linear infinite;
+}
+
+.animate-float {
+    animation: float 4s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+#root {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+
